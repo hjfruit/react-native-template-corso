@@ -10,6 +10,7 @@
     "lint:ts": "tsc --noEmit && eslint src --ext .ts,.tsx "
   },
   "dependencies": {
+    "@ant-design/react-native": "^3.3.0",
     "axios": "^0.19.2",
     "dayjs": "^1.8.27",
     "dva-core": "^2.0.2",
@@ -30,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^24.9.0",
+    "babel-plugin-import": "^1.13.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.11.0",
@@ -41,6 +43,7 @@
     "pont-engine": "^1.0.3",
     "metro-react-native-babel-preset": "^0.58.0",
     "react-test-renderer": "16.11.0",
+    "react-native-dotenv": "^0.2.0",
     "prettier": "^2.0.4",
     "typescript": "^3.8.3"
   },
