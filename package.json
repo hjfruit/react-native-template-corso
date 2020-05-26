@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/zkzhao/react-native-template-corso/issues"
   },
-  "homepage": "https://github.com/zkzhao/react-native-template-corso#readme"
+  "homepage": "https://github.com/zkzhao/react-native-template-corso#readme",
+  "devDependencies": {
+    "pont-engine": "^1.0.3"
+  }
 }
