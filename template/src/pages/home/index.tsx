@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native'
 import {
   Header,
   LearnMoreLinks,
@@ -7,10 +7,10 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen'
-
 import { connect } from 'react-redux'
 import { namespace } from '@/models/global/global-value'
 import config from '@/config'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const App = (props) => {
   return (
