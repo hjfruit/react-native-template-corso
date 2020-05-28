@@ -1,13 +1,13 @@
-import HomeScreen from '@/pages/home'
+import LoginScreen from '@/pages/login'
 import IRouteConfig from '@/router/typing'
 
-type Key = 'Home'
+type Key = 'Login'
 const routes: Record<Key, IRouteConfig> = {
-  Home: {
-    name: 'Home',
-    component: HomeScreen,
+  Login: {
+    name: 'Login',
+    component: LoginScreen,
     options: {
-      title: '首页',
+      title: '登录',
     },
   },
 }

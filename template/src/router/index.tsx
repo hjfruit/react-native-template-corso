@@ -7,19 +7,24 @@ import StackRoute from './config'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 const Stack = createStackNavigator()
 
+/**
+ * 展开路由
+ */
+const routes = []
+Object.keys(StackRoute).forEach((key) => {
+  Object.keys(StackRoute[key]).forEach((subKey) => {
+    routes.push(StackRoute[key][subKey])
+  })
+})
+
 function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="bottoms" component={BottomTabs} options={{ headerShown: false }} />
-          {Object.keys(StackRoute).map((key) => (
-            <Stack.Screen
-              key={StackRoute[key].name}
-              name={StackRoute[key].name}
-              component={StackRoute[key].component}
-              options={StackRoute[key].options}
-            />
+          {routes.map((items) => (
+            <Stack.Screen key={items.name} name={items.name} component={items.component} options={items.options} />
           ))}
         </Stack.Navigator>
       </NavigationContainer>

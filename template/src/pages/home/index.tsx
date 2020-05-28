@@ -21,7 +21,10 @@ const App = (props) => {
           <Header />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>{props.storeTest}</Text>
+              <Text style={styles.sectionTitle}>
+                {props.storeTest}
+                {props.loading.global.toString()}
+              </Text>
               <Text style={styles.sectionDescription}>
                 {config.HOST}
                 {config.WX_APPID}
@@ -90,7 +93,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapStateToProps = (models: any) => ({
-  ...models[namespace],
+const mapStateToProps = (models) => ({
+  storeTest: models[namespace].storeTest,
+  loading: models.loading,
 })
 export default connect(mapStateToProps)(App)
