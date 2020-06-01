@@ -1,22 +1,49 @@
-import { ViewStyle, TextStyle, ImageStyle, FlexStyle } from "react-native";
-import EStyleSheet from "react-native-extended-stylesheet";
+import { ViewStyle, TextStyle, ImageStyle } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-/**
- * EStyleSheet 类型
+/*************************
+ * EStyleSheet 类型 start
  */
-type IS = typeof EStyleSheet;
-declare interface IEStyleSheet extends IS {
-  create: (styles: {
-    [className: string]: Partial<
-      | ViewStyle
-      | TextStyle
-      | ImageStyle
-      | FlexStyle
-      | { [key: string]: number | string }
-    >;
-  }) => EStyleSheet.AnyObject;
+type Function<K> = () => K;
+type Value<T> = T | (string & {});
+type Variable<T> = Value<T> | Function<Value<T>>;
+type Extended<T> = { [K in keyof T]: Variable<T[K]> };
+
+type AnyStyle = ImageStyle & TextStyle & ViewStyle;
+type AnyStyleSet = { [key: string]: AnyStyle };
+
+type EStyleSet<T = any> = {
+  [K in keyof T]: T[K] extends Variable<number>
+    ? T[K]
+    : T[K] extends MediaQuery
+    ? T[K]
+    : Extended<AnyStyle> & EStyleSet;
+};
+
+type StyleSet<T = any> = {
+  [K in keyof T]: T[K] extends number
+    ? T[K]
+    : T[K] extends string
+    ? T[K]
+    : T[K] extends Function<number>
+    ? number
+    : T[K] extends Function<string>
+    ? string
+    : T[K] extends MediaQuery
+    ? any
+    : AnyStyle;
+};
+
+export type MediaQuery = { [key: string]: Extended<AnyStyle> };
+
+declare interface IEStyleSheet {
+  create<T = EStyleSet>(styles: EStyleSet<T>): StyleSet<T>;
 }
+
+/**
+ * EStyleSheet 类型 end
+ ***********************/
+
 declare interface Global {
   global: any;
 }
