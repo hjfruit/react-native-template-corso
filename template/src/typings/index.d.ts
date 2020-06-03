@@ -1,25 +1,25 @@
 import { ViewStyle, TextStyle, ImageStyle } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-
 /*************************
  * EStyleSheet 类型 start
  */
-type StyleSet<T = any> = { [K in keyof T]: AnyStyle }
+type StyleSet<T = any> = { [K in keyof T]: AnyStyle };
 
-type Value<T> = T | (string & {})
+type Value<T> = T | (string & {});
 
-type AnyStyle = ImageStyle & TextStyle & ViewStyle
-type Extended<T> = { [K in keyof T]: Value<T[K]> }
+type AnyStyle = ImageStyle & TextStyle & ViewStyle;
+type Extended<T> = { [K in keyof T]: Value<T[K]> };
 
-type NamedStyles<T> = { [P in keyof T]: Extended<AnyStyle> }
+type NamedStyles<T> = { [P in keyof T]: Extended<AnyStyle> };
 declare interface IEStyleSheet {
-  create: <T extends NamedStyles<T> | NamedStyles<any>>(styles: T) => StyleSet<T>
+  create: <T extends NamedStyles<T> | NamedStyles<any>>(
+    styles: T | NamedStyles<T>
+  ) => StyleSet<T>;
 }
 /**
  * EStyleSheet 类型 end
  ***********************/
-
 
 declare interface Global {
   global: any;
